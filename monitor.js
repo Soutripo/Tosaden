@@ -3,9 +3,9 @@ let svgWrap,tooltip;
 function normalizeId(s){if(!s)return'';try{s=s.normalize('NFKC')}catch(e){}return String(s).trim()}
 function normalizeName(n){if(!n)return'';let s=String(n);try{s=s.normalize('NFKC')}catch(e){}s=s.replace(/\uff08.*?\uff09/g,'');s=s.replace(/\(.*?\)/g,'');s=s.replace(/\u3000/g,'');s=s.replace(/\s+/g,'');return s.trim().toLowerCase()}
 function digitsOnly(s){if(!s)return'';const m=String(s).normalize('NFKC').match(/(\d{1,6})/);return m?m[1].replace(/^0+/,'')||'0':''}
-const EW_STATIONS=["伊野","伊野駅前","鳴谷","北山","北内","伊野商業前","枝川","中山","八代通","宇治団地前","咥内","宮の奥","朝倉神社前","朝倉駅前","朝倉","曙町","曙町東町","鴨部","顕川橋","蛍橋","鏡川橋","旭町三丁目","旭駅前通","旭町一丁目","上町五丁目","上町四丁目","上町二丁目","上町一丁目","枡形","グランド通","県庁前","高知城前","大橋通","堀詰","はりまや橋","デンテツ・ターミナルビル前","デンテツターミナルビル前","蓮池町","宝永町","知寄町一丁目","知寄町二丁目","知寄町","知寄町三丁目","葛島橋東詰","西高須","県立美術館通","高須","文珠通","介良通","新木","東新木","田辺島通","鹿児","舟戸","北浦","領石通","清和学園前","一条橋","明見橋","長崎","小篭通","篠原","住吉通","東工業前","後免西町","後免中町","後免東町","後免町","後免町(ごめん)","ごめん"];
-const SN_STATIONS=["高知駅前","高知橋","菜園場町","菜園場前","蓮池町通","はりまや橋","梅の辻","鏡川橋","桟橋通一丁目","桟橋通二丁目","桟橋通三丁目","桟橋通四丁目","桟橋車庫前","桟橋通五丁目"];
-function displayStationName(n){if(!n)return n;if(/デンテツ・?ターミナルビル前/.test(n)||(/デンテツ/.test(n)&&/ターミナル/.test(n)))return'バスビル';return n}
+const EW_STATIONS=["伊野","伊野駅前","鳴谷","北山","北内","伊野商業前","枝川","中山","八代通","宇治団地前","咥内","宮の奥","朝倉神社前","朝倉駅前","朝倉","曙町","曙町東町","鴨部","顕川橋","蛍橋","鏡川橋","旭町三丁目","旭駅前通","旭町一丁目","上町五丁目","上町四丁目","上町二丁目","上町一丁目","枡形","グランド通","県庁前","高知城前","大橋通","堀詰","はりまや橋","デンテツターミナルビル前","蓮池町","宝永町","知寄町一丁目","知寄町二丁目","知寄町","知寄町三丁目","葛島橋東詰","西高須","県立美術館通","高須","文珠通","介良通","新木","東新木","田辺島通","鹿児","舟戸","北浦","領石通","清和学園前","一条橋","明見橋","長崎","小篭通","篠原","住吉通","東工業前","後免西町","後免中町","後免東町","後免町"];
+const SN_STATIONS=["高知駅前","高知橋","菜園場町","蓮池町通","はりまや橋","梅の辻","鏡川橋","桟橋通一丁目","桟橋通二丁目","桟橋通三丁目","桟橋通四丁目","桟橋車庫前","桟橋通五丁目"];
+function displayStationName(n){if(!n)return n;if(/デンテツ.*ターミナル.*ビル/i.test(n))return'デンテツターミナルビル前';return n}
 const per=Math.ceil(EW_STATIONS.length/5);
 const ROWS_STATIONS=[EW_STATIONS.slice(0,per),EW_STATIONS.slice(per,per*2),EW_STATIONS.slice(per*2,per*3),EW_STATIONS.slice(per*3,per*4),EW_STATIONS.slice(per*4),SN_STATIONS];
 const ROWS=ROWS_STATIONS.length;
