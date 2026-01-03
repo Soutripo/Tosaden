@@ -7,8 +7,8 @@
 <style>
 :root{--bg:#061018;--panel:#07151c;--text:#e9f6ff;--muted:#86a3b8;--train-color:#ffffff;--station-bg:#062634;--station-border:#0f5c77}
 html,body{height:100%;margin:0;font-family:"Yu Gothic",Meiryo,system-ui}
-body{background:var(--bg);color:var(--text);overflow:hidden}
-.header{display:flex;align-items:center;gap:10px;padding:8px 14px;position:relative;flex-wrap:wrap}
+body{background:var(--bg);color:var(--text);overflow:hidden;display:flex;flex-direction:column}
+.header{display:flex;align-items:center;gap:10px;padding:8px 14px;position:relative;flex-wrap:wrap;flex-shrink:0}
 .title{font-size:20px;margin:0;font-weight:700}
 .time-display{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;top:50%;margin-top:-24px}
 .bigtime{font-size:48px;font-weight:700;background:transparent;border:0;color:var(--text);padding:0;font-family:monospace;letter-spacing:3px;text-align:center;min-width:220px}
@@ -22,7 +22,7 @@ body{background:var(--bg);color:var(--text);overflow:hidden}
 .select option{background:var(--bg);color:var(--text)}
 .day-selector{display:flex;align-items:center;gap:8px}
 .day-label{font-size:15px;color:var(--text);font-weight:500}
-.container{height:calc(100vh - 90px);padding:4px 12px 12px 12px;box-sizing:border-box;width:100%}
+.container{flex:1;padding:4px 12px 12px 12px;box-sizing:border-box;width:100%;position:relative;overflow:hidden}
 #svgwrap{width:100%;height:100%;display:block}
 svg{width:100%;height:100%}
 .station-rect{fill:var(--station-bg);stroke:var(--station-border);stroke-width:1.0;rx:6;ry:6}
@@ -44,8 +44,9 @@ svg{width:100%;height:100%}
 .timetable-table td{font-size:13px}
 .timetable-info{margin-top:12px;padding:10px;background:rgba(15,92,119,0.1);border-radius:6px;font-size:13px}
 .timetable-info strong{color:var(--text)}
-.legend{position:fixed;left:12px;bottom:8px;color:var(--muted);font-size:13px}
-#train_count{position:fixed;right:12px;bottom:12px;background:#051720;color:var(--text);padding:8px 12px;border:1px solid #123;font-size:15px;z-index:50;font-weight:600}
+.footer{flex-shrink:0;display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--bg);border-top:1px solid #123}
+.legend{color:var(--muted);font-size:13px}
+#train_count{background:#051720;color:var(--text);padding:8px 12px;border:1px solid #123;font-size:15px;font-weight:600}
 
 /* スマホ対応 */
 @media (max-width: 768px) {
@@ -59,11 +60,12 @@ svg{width:100%;height:100%}
   .btn{padding:6px 8px;font-size:12px}
   .btn-play{padding:8px 16px;font-size:14px}
   .select{padding:6px 8px;font-size:12px}
-  .container{height:calc(100vh - 160px);padding:4px 6px 6px 6px}
+  .container{padding:0 6px}
   .station-text{font-size:10px}
   .trip-label{font-size:10px}
-  .legend{font-size:11px;left:8px;bottom:6px}
-  #train_count{font-size:13px;right:8px;bottom:8px;padding:6px 10px}
+  .footer{padding:6px 8px}
+  .legend{font-size:11px}
+  #train_count{font-size:13px;padding:6px 10px}
 }
 
 @media (max-width: 480px) {
@@ -115,41 +117,30 @@ svg{width:100%;height:100%}
 <option value="10">×10</option>
 <option value="30">×30</option>
 <option value="60">×60</option>
-<option value="120">×120</option>
-<option value="300">×300</option>
 </select>
 <button id="playBtn" class="btn btn-play">再生 ▶</button>
 </div>
 </div>
 </div>
-<div class="container"><div id="svgwrap"></div></div>
+<div class="container">
+<div id="svgwrap"></div>
+</div>
+<div class="footer">
+<div class="legend">
+行先凡例 | 伊=伊野 後=後免 高=高知駅前 桟=桟橋通五丁目 四=桟橋通四丁目 橋=はりまや橋 朝=朝倉 鏡=鏡川橋 枡=枡形 知=知寄町 文=文珠通 介=介良通 領=領石通
+</div>
+<div id="train_count">運行中: 0両</div>
+</div>
 <div id="tooltip" class="tooltip"></div>
 <div id="timetableModal" class="timetable-modal">
 <div class="timetable-content">
 <div class="timetable-header">
-<div class="timetable-title" id="timetableTitle">時刻表</div>
+<div id="timetableTitle" class="timetable-title">時刻表</div>
 <button class="close-btn" onclick="closeTimetable()">閉じる</button>
 </div>
 <div id="timetableBody"></div>
 </div>
 </div>
-<div class="legend">
-<strong>行先凡例</strong>
-<span style="margin-left:12px">伊=伊野</span>
-<span style="margin-left:12px">後=後免</span>
-<span style="margin-left:12px">高=高知駅前</span>
-<span style="margin-left:12px">桟=桟橋五丁目</span>
-<span style="margin-left:12px">四=桟橋四丁目</span>
-<span style="margin-left:12px">橋=はりまや橋</span>
-<span style="margin-left:12px">朝=朝倉</span>
-<span style="margin-left:12px">鏡=鏡川橋</span>
-<span style="margin-left:12px">枡=枡形</span>
-<span style="margin-left:12px">知=知寄町</span>
-<span style="margin-left:12px">文=文珠通</span>
-<span style="margin-left:12px">介=介良通</span>
-<span style="margin-left:12px">領=領石通</span>
-</div>
-<div id="train_count">運行中: 0両</div>
 <script src="monitor.js?v=20260103-fix2"></script>
 </body>
 </html>
