@@ -50,40 +50,35 @@ svg{width:100%;height:100%}
 /* スマホ対応 */
 @media (max-width: 768px) {
   body{overflow:auto}
-  .header{flex-direction:column;align-items:stretch;padding:10px;gap:8px}
-  .title{font-size:16px;text-align:center}
-  .time-display{position:static;transform:none;justify-content:center;margin:10px 0}
+  .header{padding:6px 8px;position:sticky;top:0;background:var(--bg);z-index:100;border-bottom:1px solid #123}
+  .title{font-size:16px}
+  .time-display{position:static;transform:none;margin-top:8px;justify-content:center}
   .bigtime{font-size:32px;min-width:auto}
-  .controls{margin-left:0;width:100%;align-items:stretch}
-  .controls-row{flex-wrap:wrap;justify-content:center;gap:4px}
-  .btn{padding:8px 10px;font-size:12px;flex:1;min-width:60px}
-  .btn-play{font-size:14px;padding:10px 16px}
-  .select{padding:8px;font-size:12px;flex:1}
-  .day-selector{justify-content:center;flex-wrap:wrap}
-  .day-label{font-size:13px}
-  .container{height:auto;min-height:calc(100vh - 280px);padding:8px}
-  #svgwrap{min-height:400px;height:60vh}
-  .station-text{font-size:10px}
-  .trip-label{font-size:10px}
-  .train-circle{r:6}
-  .legend{position:static;padding:10px;font-size:11px;text-align:center;background:var(--panel);margin:10px;border-radius:6px}
-  .legend span{display:inline-block;margin:4px 6px !important}
-  #train_count{position:static;margin:10px;text-align:center;font-size:13px}
-  .timetable-content{max-width:95vw;padding:15px;max-height:90vh}
-  .timetable-table th,.timetable-table td{padding:6px 8px;font-size:11px}
-  .tooltip{font-size:11px;min-width:150px;padding:6px}
+  .controls{margin-left:0;width:100%;align-items:center}
+  .controls-row{gap:4px;flex-wrap:wrap;justify-content:center}
+  .btn{padding:6px 8px;font-size:12px}
+  .btn-play{padding:8px 16px;font-size:14px}
+  .select{padding:6px 8px;font-size:12px}
+  .container{height:auto;min-height:10400px;padding:10px;width:100%}
+  #svgwrap{width:100%;height:10400px}
+  svg{width:100%;height:100%}
+  .station-text{font-size:16px;font-weight:600}
+  .station-rect{rx:8;ry:8;stroke-width:1.2}
+  .trip-label{font-size:14px;font-weight:700}
+  .train-circle{r:11;stroke-width:2}
+  .track-line{stroke-width:9}
+  .tick{stroke-width:2.5}
+  .legend{position:fixed;left:8px;bottom:8px;font-size:11px;background:var(--bg);padding:6px;border-radius:4px;border:1px solid #123}
+  #train_count{position:fixed;right:8px;bottom:8px;font-size:13px;padding:6px 10px}
 }
 
 @media (max-width: 480px) {
-  .bigtime{font-size:24px}
-  .btn{padding:6px 8px;font-size:11px;min-width:50px}
-  .btn-play{font-size:13px;padding:8px 12px}
-  #svgwrap{min-height:300px;height:50vh}
-  .station-text{font-size:8px}
+  .title{font-size:14px}
+  .bigtime{font-size:28px;letter-spacing:2px}
+  .btn{padding:5px 6px;font-size:11px}
+  .station-text{font-size:9px}
   .trip-label{font-size:9px}
-  .controls-row{gap:3px}
 }
-
 </style>
 </head>
 <body>
@@ -161,6 +156,6 @@ svg{width:100%;height:100%}
 <span style="margin-left:12px">領=領石通</span>
 </div>
 <div id="train_count">運行中: 0両</div>
-<script src="monitor.js"></script>
+<script src="monitor.js?v=20260103-2"></script>
 </body>
 </html>
