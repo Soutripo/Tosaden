@@ -49,8 +49,8 @@ svg{width:100%;height:100%}
 
 /* スマホ対応 */
 @media (max-width: 768px) {
-  body{overflow:auto}
-  .header{padding:6px 8px;position:sticky;top:0;background:var(--bg);z-index:100;border-bottom:1px solid #123}
+  body{overflow:hidden}
+  .header{padding:6px 8px}
   .title{font-size:16px}
   .time-display{position:static;transform:none;margin-top:8px;justify-content:center}
   .bigtime{font-size:32px;min-width:auto}
@@ -59,17 +59,11 @@ svg{width:100%;height:100%}
   .btn{padding:6px 8px;font-size:12px}
   .btn-play{padding:8px 16px;font-size:14px}
   .select{padding:6px 8px;font-size:12px}
-  .container{height:auto;min-height:10400px;padding:10px;width:100%}
-  #svgwrap{width:100%;height:10400px}
-  svg{width:100%;height:100%}
-  .station-text{font-size:16px;font-weight:600}
-  .station-rect{rx:8;ry:8;stroke-width:1.2}
-  .trip-label{font-size:14px;font-weight:700}
-  .train-circle{r:11;stroke-width:2}
-  .track-line{stroke-width:9}
-  .tick{stroke-width:2.5}
-  .legend{position:fixed;left:8px;bottom:8px;font-size:11px;background:var(--bg);padding:6px;border-radius:4px;border:1px solid #123}
-  #train_count{position:fixed;right:8px;bottom:8px;font-size:13px;padding:6px 10px}
+  .container{height:calc(100vh - 200px);padding:4px 6px 6px 6px}
+  .station-text{font-size:10px}
+  .trip-label{font-size:10px}
+  .legend{font-size:11px;left:8px;bottom:6px}
+  #train_count{font-size:13px;right:8px;bottom:8px;padding:6px 10px}
 }
 
 @media (max-width: 480px) {
@@ -156,6 +150,6 @@ svg{width:100%;height:100%}
 <span style="margin-left:12px">領=領石通</span>
 </div>
 <div id="train_count">運行中: 0両</div>
-<script src="monitor.js?v=20260103-2"></script>
+<script src="monitor.js?v=20260103-3"></script>
 </body>
 </html>
