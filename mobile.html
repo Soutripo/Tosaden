@@ -8,13 +8,13 @@
 :root{--bg:#061018;--panel:#07151c;--text:#e9f6ff;--muted:#86a3b8;--train-color:#ffffff;--station-bg:#062634;--station-border:#0f5c77}
 html,body{height:100%;margin:0;font-family:"Yu Gothic",Meiryo,system-ui;overflow:hidden}
 body{background:var(--bg);color:var(--text)}
-.header{display:flex;align-items:center;gap:10px;padding:8px 14px;background:var(--bg);border-bottom:2px solid #123;position:relative;flex-wrap:wrap}
+.header{display:flex;align-items:center;gap:10px;padding:8px 14px;background:var(--bg);border-bottom:2px solid #123;position:relative;flex-wrap:wrap;min-height:85px}
 .title{font-size:20px;margin:0;font-weight:700}
 .time-display{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px}
 .bigtime{font-size:48px;font-weight:700;background:transparent;border:0;color:var(--text);padding:0;font-family:monospace;letter-spacing:3px;text-align:center;min-width:220px}
 .controls{margin-left:auto;display:flex;flex-direction:column;gap:6px;align-items:flex-end}
 .controls-row{display:flex;gap:8px;align-items:center}
-.day-selector{display:flex;align-items:center;gap:8px;position:absolute;left:14px;top:50px}
+.day-selector{display:flex;align-items:center;gap:8px;position:absolute;left:14px;top:55px}
 .btn{background:transparent;border:1px solid #123;padding:7px 12px;border-radius:6px;color:var(--text);cursor:pointer;font-size:14px;font-weight:500}
 .btn:hover{background:rgba(255,255,255,0.05)}
 .btn-play{font-size:16px;padding:10px 20px;font-weight:600;border:2px solid #0f5c77;background:rgba(15,92,119,0.2)}
@@ -23,7 +23,7 @@ body{background:var(--bg);color:var(--text)}
 .select option{background:var(--bg);color:var(--text)}
 .day-selector{display:flex;align-items:center;gap:8px}
 .day-label{font-size:15px;color:var(--text);font-weight:500}
-.container{height:calc(100vh - 80px);padding:4px 12px 12px 12px;box-sizing:border-box;width:100%;overflow:hidden}
+.container{height:calc(100vh - 95px);padding:4px 12px 12px 12px;box-sizing:border-box;width:100%;overflow:hidden}
 #svgwrap{width:100%;height:100%;display:block}
 svg{width:100%;height:100%}
 .station-rect{fill:var(--station-bg);stroke:var(--station-border);stroke-width:1.0;rx:6;ry:6}
