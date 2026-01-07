@@ -14,7 +14,7 @@ function buildROWS_STATIONS(){const cols=getColumns();const rows=[];if(window.in
 let ROWS_STATIONS=buildROWS_STATIONS();
 const ROWS=ROWS_STATIONS.length;
 let viewW=1400,viewH=800;
-const marginLeft=window.innerWidth<=768?10:100,marginRight=window.innerWidth<=768?10:80,marginTop=window.innerWidth<=768?5:40,marginBottom=window.innerWidth<=768?5:48;
+const marginLeft=window.innerWidth<=768?10:100,marginRight=window.innerWidth<=768?10:80,marginTop=window.innerWidth<=768?5:20,marginBottom=window.innerWidth<=768?5:48;
 let rowY=[],stationPos=[];
 let stopsById={},trips={},tripRoute={},opMap={},destMap={},tripDayType={},currentDayType='weekday',waitingTrains={},tripsByOperation={};
 const destCharMap=[{pat:/伊野/,char:'伊'},{pat:/後免|ごめん/,char:'後'},{pat:/高知駅|高知/,char:'高'},{pat:/桟橋通五丁目|桟橋五丁目/,char:'桟'},{pat:/桟橋通四丁目|桟橋四丁目/,char:'四'},{pat:/はりまや/,char:'橋'},{pat:/朝倉/,char:'朝'},{pat:/鏡川橋/,char:'鏡'},{pat:/枡形/,char:'枡'},{pat:/知寄町/,char:'知'},{pat:/文珠通/,char:'文'},{pat:/介良通/,char:'介'},{pat:/領石通/,char:'領'}];
